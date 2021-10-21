@@ -1,0 +1,27 @@
+.app__container {
+  display: flex;
+  margin-top: 10vh;
+}
+
+.app__main {
+  .container {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+
+.app__main.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+  overflow-x: hidden;
+
+  .infinite-scroll-component {
+    margin-top: 73px;
+    padding: 1rem 2rem;
+  }
+}
+
+.searchScreen__container {
+  padding: 1rem !important;
+  max-width: 100% !important;
+}
