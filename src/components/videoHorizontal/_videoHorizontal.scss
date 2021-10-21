@@ -1,22 +1,20 @@
-@import "../../_base.scss";
+@import "../../base.scss";
 
 .videoHorizontal {
   border-bottom: 0.3px solid $border-color;
-  cursor: pointer;
 
-  &:first-of-type {
-    margin-top: 0px !important;
-    padding-top: 0px !important;
-  }
+  cursor: pointer;
 
   &__left {
     position: relative;
     text-align: center;
+    padding-left: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
   }
 
   &__thumbnail {
     width: 100%;
-
     &-channel {
       width: 50%;
       border-radius: 50%;
@@ -29,8 +27,11 @@
 
   &__duration {
     position: absolute;
+
     bottom: 0.25rem;
     right: 1.25rem;
+
+    font-size: 0.9rem;
     padding: 0.2rem;
     background: #080808ec;
     border-radius: 3px;
@@ -41,15 +42,14 @@
   }
 
   &__title {
-    font-size: 1rem;
-    color: #fff;
-    letter-spacing: 0.1px;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
 
     @include line-clamp(2);
   }
-
   &__desc {
     @include line-clamp(2);
+    font-size: 0.9rem;
   }
 
   &__channel {
@@ -61,7 +61,6 @@
       margin-right: 0.5rem;
       cursor: pointer;
     }
-
     p {
       font-size: 0.9rem;
       @include line-clamp(1);
@@ -71,21 +70,19 @@
 
 @media (max-width: $breakpoint-small) {
   .videoHorizontal {
-    font-size: 12px;
+    font-size: 0.8rem;
 
     &__details {
       @include line-clamp(1);
     }
-
     &__channel {
       margin: 0.1rem 0;
 
       img {
         display: none;
       }
-
       p {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
       }
     }
 
@@ -94,17 +91,8 @@
     }
 
     &__title {
-      font-size: 14px;
-      @include line-clamp(2);
-    }
-  }
-}
-
-@media (max-width: $breakpoint-medium) {
-  .videoHorizontal {
-    &:first-of-type {
-      margin-top: 10px !important;
-      padding-top: 10px !important;
+      font-size: 0.9rem;
+      @include line-clamp(1);
     }
   }
 }

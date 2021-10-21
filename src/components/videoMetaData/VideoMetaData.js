@@ -7,6 +7,8 @@ import {MdThumbUp, MdThumbDown}from 'react-icons/md'
 import ShowMoreText from 'react-show-more-text'
 import { useDispatch, useSelector } from 'react-redux'
 import { checkSubscriptionStatus, getChannelDetails } from '../../redux/actions/channel.action'
+import HelmetCustom from '../HelmetCustom'
+import { useHistory } from 'react-router'
 
 
 const VideoMetaData = ({video:{snippet,statistics}, videoId}) => {
@@ -28,8 +30,15 @@ const VideoMetaData = ({video:{snippet,statistics}, videoId}) => {
     dispatch(checkSubscriptionStatus(channelId)) 
   },[dispatch, channelId])
 
+  const history = useHistory()
+
+  const handleClick = () => {
+    history.push(`/channel/${channelId}`)
+  }
+
   return (
     <div className="videoMetaData py-2">
+      <HelmetCustom title={title} description={description}/>
       <div className="videoMetaData__top">
         <h5>{title}</h5>
         <div className="d-flex justify-content-between align-items-center py-1">
@@ -46,7 +55,7 @@ const VideoMetaData = ({video:{snippet,statistics}, videoId}) => {
         </div>
       </div>
       <div className="videoMetaData__channel d-flex justify-content-between align-items-center my-2 py-3">
-        <div className="d-flex">
+        <div className="d-flex" onClick={handleClick} style={{cursor: 'pointer'}}>
           <img src={channelSnippet?.thumbnails?.default?.url} alt="" className='rounded-circle mr-3'/>
           <div className="d-flex flex-column">
             <span>{channelTitle}</span>

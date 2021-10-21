@@ -8,6 +8,7 @@ import { getPopularVideos, getVideosByCategory } from "../../redux/actions/video
 
 import InfiniteScroll from 'react-infinite-scroll-component'
 import SkeletonVideo from "../../components/skeletons/SkeletonVideo"
+import HelmetCustom from "../../components/HelmetCustom"
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
@@ -29,6 +30,7 @@ const HomeScreen = () => {
 
   return (
     <>
+    <HelmetCustom title='YouTube'/>
     <CategoriesBar />
     
     

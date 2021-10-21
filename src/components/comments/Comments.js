@@ -27,11 +27,13 @@ const Comments = ({videoId, totalComments}) => {
     setText('')
   }
 
+  const { photoUrl } = useSelector(state => state.auth?.user)
+
   return (
     <div className='comments'>
       <p>{totalComments} Comments</p>
       <div className='comments__form d-flex w-100 my-2'>
-        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="" className='rounded-circle mr-3'/>
+        <img src={photoUrl} alt="" className='rounded-circle mr-3'/>
 
         <form onSubmit={handleComment} className="d-flex flex-grow-1">
           <input type="text" className="flex-grow-1" placeholder='Write a comment...' value={text} onChange={e=>setText(e.target.value)}/>

@@ -72,9 +72,13 @@ const VideoHorizontal = ({video, searchScreen, subScreen}) => {
     : history.push(`/channel/${_channelId}`)
   }
 
+  const goToChannel = () => {
+    history.push(`/channel/${_channelId}`)
+  }
+
   return (
-    <Row className='videoHorizontal m-1 py-2 align-items-center' onClick={handleClick}>
-      <Col xs={6} md={searchScreen || subScreen ? 4 : 6} className='videoHorizontal__left pl-0'>
+    <Row className='videoHorizontal m-1 py-2 align-items-center'>
+      <Col xs={6} md={searchScreen || subScreen ? 4 : 6} className='videoHorizontal__left pl-0' onClick={handleClick}>
       <LazyLoadImage 
           src={medium.url}
           effect='blur'
@@ -85,12 +89,12 @@ const VideoHorizontal = ({video, searchScreen, subScreen}) => {
       </Col>
 
       <Col xs={6} md={searchScreen || subScreen ? 8 : 6} className='videoHorizontal__right p-0'>
-        <p className="videoHorizontal__title mb-1">
+        <p className="videoHorizontal__title mb-1" onClick={handleClick}>
           {title}
         </p>
 
         {isVideo &&
-          <div className="videoHorizontal__details">
+          <div className="videoHorizontal__details" onClick={handleClick}>
             <AiFillEye /> {numeral(views).format("0.a")} Views • 
             {moment(publishedAt).fromNow()}
           </div>
@@ -99,10 +103,10 @@ const VideoHorizontal = ({video, searchScreen, subScreen}) => {
         {
           
           (!description && (searchScreen || subScreen))  ? <p className='videoHorizontal__desc'>No Channel Description</p> 
-          : <p className='mt-1 videoHorizontal__desc'>{description}</p>
+          : <p className='mt-1 videoHorizontal__desc' onClick={handleClick}>{description}</p>
         }
 
-        <div className="videoHorizontal__channel d-flex align-items-center my-1">
+        <div className="videoHorizontal__channel d-flex align-items-center my-1" onClick={goToChannel}>
           {isVideo && 
             <LazyLoadImage 
               src={channelIcon?.url}

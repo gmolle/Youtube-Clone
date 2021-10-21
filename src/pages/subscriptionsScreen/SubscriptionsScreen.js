@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { useSelector, useDispatch } from 'react-redux'
+import HelmetCustom from '../../components/HelmetCustom'
 import VideoHorizontal from '../../components/videoHorizontal/VideoHorizontal'
 import { getSubscribedChannels } from '../../redux/actions/videos.action'
 import './_subscriptionScreen.scss'
@@ -17,6 +18,8 @@ const SubscriptionsScreen = () => {
 
   return (
     <Container fluid>
+      <HelmetCustom title='Subscriptions - YouTube'/>
+
       {
         !loading ? channels?.map(channel=> <VideoHorizontal video={channel} key={channel.id} subScreen/>)
         : <SkeletonTheme color='#343a40' highlightColor='#3c4147'>

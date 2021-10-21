@@ -8,6 +8,7 @@ import Comments from '../../components/comments/Comments'
 import VideoHorizontal from '../../components/videoHorizontal/VideoHorizontal'
 import VideoMetaData from '../../components/videoMetaData/VideoMetaData'
 import { getRelatedVideos, getVideoById } from '../../redux/actions/videos.action'
+import {Helmet} from 'react-helmet'
 import './watchScreen.scss'
 
 const WatchScreen = () => {
@@ -27,6 +28,9 @@ const WatchScreen = () => {
 
   return (
     <Row className='p-3'>
+      <Helmet>
+        <title>{video?.snippet.title}</title>
+      </Helmet>
       <Col lg={8} >
 
         <div className="watchScreen__player">

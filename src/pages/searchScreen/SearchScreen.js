@@ -6,6 +6,7 @@ import { useParams } from "react-router"
 import { getVideosBySearch } from "../../redux/actions/videos.action"
 import VideoHorizontal from '../../components/videoHorizontal/VideoHorizontal'
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
+import HelmetCustom from "../../components/HelmetCustom"
 
 
 const SearchScreen = () => {
@@ -20,11 +21,13 @@ const SearchScreen = () => {
 
   return (
     <Container className='searchScreen__container'>
+      <HelmetCustom title={`${query} - YouTube`}/>
+
       {!loading ? (
             videos?.map(video => (
                <VideoHorizontal
                   video={video}
-                  key={video.id.videoId}
+                  key={video.etag}
                   searchScreen
                />
             ))

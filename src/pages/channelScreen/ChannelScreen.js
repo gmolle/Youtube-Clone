@@ -4,6 +4,7 @@ import { Col, Container, Row } from "react-bootstrap"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router"
+import HelmetCustom from "../../components/HelmetCustom"
 import Video from "../../components/video/Video"
 import { checkSubscriptionStatus, getChannelDetails } from "../../redux/actions/channel.action"
 import { getVideosByChannel } from "../../redux/actions/videos.action"
@@ -29,6 +30,7 @@ const ChannelScreen = () => {
 
   return (
     <>
+    <HelmetCustom title={`${snippet?.title} - YouTube`}/>
     <div className='px-5 py-2 my-2 d-flex justify-content-between align-items-center channelHeader'>
       <div className='d-flex align-items-center'>
         <img src={snippet?.thumbnails?.default?.url} alt="" />
@@ -48,11 +50,11 @@ const ChannelScreen = () => {
           {
             
             !loading ? videos?.map(video => 
-            <Col md={3} lg={3}>
+            <Col md={3} lg={3} key={video.contentDetails.videoId}>
               <Video video={video} channelScreen/>
             </Col>) : 
-            [...Array(15)].map(()=> 
-            <Col md={3} lg={3}>
+            [...Array(15)].map((_,idx)=> 
+            <Col md={3} lg={3} key={idx}>
               <SkeletonTheme color='#343a40' highlightColor='#3c4147'>
                 <Skeleton width='100%' height='140px'/>
               </SkeletonTheme>
