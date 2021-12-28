@@ -27,6 +27,8 @@ const LoginScreen = () => {
         <img src="http://pngimg.com/uploads/youtube/youtube_PNG2.png" alt="" />
         <button onClick={handleLogin}>Login With Google</button>
         <p>This Project is made using Youtube Data API</p>
+        <p>This app isn't verified with Google.</p>
+        <p>After logging in, click on the small advanced button, and then click to continue to the app.</p>
       </div>
     </div>
   )
